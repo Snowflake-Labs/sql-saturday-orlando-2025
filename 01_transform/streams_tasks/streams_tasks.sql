@@ -129,7 +129,7 @@ AS
                 source.max_wind_speed_100m_mph, CURRENT_TIMESTAMP());
 
 -- Tasks are created in SUSPENDED state by default. Resume task to activate it:
-ALTER TASK tasty_bytes.harmonized.update_hamburg_weather_task RESUME;
+ALTER TASK tasty_bytes.harmonized.update_hamburg_weather_st_task RESUME;
 
 -- Check stream status (reusable query)
 SELECT 'order_header_stream' AS stream_name, COUNT(*) AS records
@@ -144,7 +144,7 @@ CALL tasty_bytes.public.simulate_new_orders(100);
 -- Re-run the stream status query above to see new records in the streams
 
 -- Execute the task to process stream data
-EXECUTE TASK tasty_bytes.harmonized.update_hamburg_weather_task;
+EXECUTE TASK tasty_bytes.harmonized.update_hamburg_weather_st_task;
 
 -- Re-run the stream status query, should be empty now
 
