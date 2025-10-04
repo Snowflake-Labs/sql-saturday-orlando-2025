@@ -19,6 +19,13 @@ hamburg_weather = session.table("INSERT NAME OF VIEW/TABLE HERE").select(
     col("MAX_WIND_SPEED_100M_MPH")
 ).to_pandas()
 
+# Filter to show only last 30 days
+# recent_cutoff = datetime.now() - timedelta(days=30)
+# hamburg_weather = hamburg_weather.filter(col("DATE") >= recent_cutoff)
+
+# Convert to pandas
+# hamburg_weather = hamburg_weather.to_pandas()
+
 # Create a copy of the dataframe with sales in millions
 hamburg_weather['DAILY_SALES_MILLIONS'] = hamburg_weather['DAILY_SALES'] / 1000000
 
